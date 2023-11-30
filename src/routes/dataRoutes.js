@@ -1,6 +1,6 @@
 import express from 'express';
 import * as dataController from '../controllers/dataController.js';
-import { verifyToken } from '../middlewares/authenMiddlewares.js';
+import { verifyToken } from './middlewares/authenMiddlewares.js';
 
 const router = express();
 
