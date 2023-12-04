@@ -2,13 +2,13 @@ import { adaRequest } from '../utils/axiosUtils.js';
 import { handleReturn } from '../utils/handleResponse.js';
 import { publishData } from '../utils/mqttUtils.js';
 
-export const lastFan = async (req, res, next) => {
+export const dataFan = async (req, res, next) => {
   adaRequest
-    .get('/feeds/yolo-fan/data/last')
+    .get('/feeds/device1')
     .then(({ data }) => {
       res.status(200).json({
         ...data,
-        feed_key: 'yolo-fan',
+        feed_key: 'device1',
         message: 'successful',
       });
     })
@@ -18,13 +18,13 @@ export const lastFan = async (req, res, next) => {
     });
 };
 
-export const lastLed = async (req, res, next) => {
+export const dataLed = async (req, res, next) => {
   adaRequest
-    .get('/feeds/yolo-led/data/last')
+    .get('https://io.adafruit.com/api/v2/Kd7/feeds/device2/data')
     .then(({ data }) => {
       res.status(200).json({
         ...data,
-        feed_key: 'yolo-led',
+        feed_key: 'device2',
         message: 'successful',
       });
     })
@@ -43,7 +43,7 @@ export const setFan = async (req, res, next) => {
   } else {
     let temperature = parseInt(value);
     if (temperature >= 0 && temperature <= 100) {
-      publishData('yolo-fan', temperature, (result) =>
+      publishData('device1', temperature, (result) =>
         handleReturn(result, res, next)
       );
     } else {
@@ -61,7 +61,7 @@ export const toggleLed = async (req, res, next) => {
   } else {
     let light = parseInt(value);
     if (light >= 0 && light <= 1) {
-      publishData('yolo-led', light, (result) =>
+      publishData('device2', light, (result) =>
         handleReturn(result, res, next)
       );
     } else {

@@ -1,8 +1,8 @@
 import mqtt from 'mqtt';
 
 const realtimeUpdate = (io) => {
-  const username = `${process.env.ADAFRUIT_IO_USERNAME}`;
-  const key = `${process.env.ADAFRUIT_KEY}`;
+  const username = 'theloc3101';
+  const key = 'aio_unJU27qNA5xpveMTxiJGmG3Bgufm';
   const host = 'mqtt://io.adafruit.com';
   const client = mqtt.connect(host, {
     username: username,

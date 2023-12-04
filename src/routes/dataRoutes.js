@@ -17,8 +17,8 @@ const router = express();
 
  *  
  * */
-router.get('/lastFan', dataController.lastFan);
-router.get('/lastLed', dataController.lastLed);
+router.get('/dataFan', dataController.dataFan);
+router.get('/dataLed', dataController.dataLed);
 router.post('/setFan', dataController.setFan);
 router.post('/toggleLed', dataController.toggleLed);
 
