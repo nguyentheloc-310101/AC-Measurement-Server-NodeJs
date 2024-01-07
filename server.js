@@ -29,12 +29,15 @@ server.listen(PORT, () => {
 
 const io = new Server(server, {
   cors: {
-    origin: `${process.env.CLIENT_HOST}`,
+    origin: '*',
+    methods: ['GET', 'POST'],
+    credentials: true,
   },
 });
 
 realtimeUpdate(io);
 // listenEvents(io);
+
 io.listen(process.env.SOCKET_PORT);
 
 route(app);

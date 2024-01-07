@@ -20,7 +20,7 @@ export const dataFan = async (req, res, next) => {
 
 export const dataLed = async (req, res, next) => {
   adaRequest
-    .get('https://io.adafruit.com/api/v2/Kd7/feeds/device2/data')
+    .get('https://io.adafruit.com/api/v2/theloc3101/feeds/device2/data')
     .then(({ data }) => {
       res.status(200).json({
         ...data,
