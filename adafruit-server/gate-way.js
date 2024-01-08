@@ -1,8 +1,8 @@
 import mqtt from 'mqtt';
 
 const realtimeUpdate = (io) => {
-  const username = 'theloc3101';
-  const key = 'aio_MSLa80LuIuRtM9aP68apG9hB0OgA';
+  const username = process.env.ADAFRUIT_IO_USERNAME;
+  const key = 'aio_AVqe15tSzO8wSpi39x2Yl9tbW9VS';
   const host = 'mqtt://io.adafruit.com';
   const client = mqtt.connect(host, {
     username: username,
@@ -14,10 +14,12 @@ const realtimeUpdate = (io) => {
     client.subscribe(`${username}/feeds/device1`);
 
     client.subscribe('theloc3101/feeds/device2');
+    client.subscribe('theloc3101/feeds/temperature');
+    client.subscribe('theloc3101/feeds/humidity');
 
-    // client.subscribe(`${username}/feeds/device3`);
+    client.subscribe(`theloc3101/feeds/device3`);
 
-    // client.subscribe(`${username}/feeds/device4`);
+    client.subscribe(`theloc3101/feeds/device4`);
 
     // client.subscribe(`${username}/feeds/person`);
   });

@@ -21,5 +21,7 @@ router.get('/dataFan', dataController.dataFan);
 router.get('/dataLed', dataController.dataLed);
 router.post('/setFan', dataController.setFan);
 router.post('/toggleLed', dataController.toggleLed);
+router.get('/dataTemp', dataController.dataTemp);
+router.get('/dataHumidity', dataController.dataHumid);
 
 export default router;

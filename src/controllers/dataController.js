@@ -4,11 +4,56 @@ import { publishData } from '../utils/mqttUtils.js';
 
 export const dataFan = async (req, res, next) => {
   adaRequest
-    .get('/feeds/device1')
+    .get('/feeds/device1/data')
     .then(({ data }) => {
       res.status(200).json({
         ...data,
         feed_key: 'device1',
+        message: 'successful',
+      });
+    })
+    .catch((error) => {
+      res.status(400);
+      return next(new Error(error.message));
+    });
+};
+// export const dataTemperature = async (res, next) => {
+//   adaRequest
+//     .get('https://io.adafruit.com/api/v2/theloc3101/feeds/temperature')
+//     .then(({ data }) => {
+//       res.status(200).json({
+//         ...data,
+//         feed_key: 'temperature',
+//         message: 'successful',
+//       });
+//     })
+//     .catch((error) => {
+//       res.status(400);
+//       return next(new Error(error.message));
+//     });
+// };
+export const dataTemp = async (req, res, next) => {
+  adaRequest
+    .get('https://io.adafruit.com/api/v2/theloc3101/feeds/temperature/data')
+    .then(({ data }) => {
+      res.status(200).json({
+        ...data,
+        feed_key: 'temperature',
+        message: 'successful',
+      });
+    })
+    .catch((error) => {
+      res.status(400);
+      return next(new Error(error.message));
+    });
+};
+export const dataHumid = async (req, res, next) => {
+  adaRequest
+    .get('https://io.adafruit.com/api/v2/theloc3101/feeds/humidity/data')
+    .then(({ data }) => {
+      res.status(200).json({
+        ...data,
+        feed_key: 'humidity',
         message: 'successful',
       });
     })
